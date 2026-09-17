@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Platform repos (AOSP / Evolution X) carrying our commits, pinned to i928 forks.
-  Each evo-a16 branch is upstream bka plus our patches; when Evo moves bka
-  forward, rebase the patches onto it and push, or the tree stays on the old base.
+  Platform repos (AOSP / Evolution X / LineageOS) pinned to i928 forks.
+
+  Two kinds of pin:
+  * evo-a16: upstream bka plus our patches. When Evo moves bka forward, rebase
+    the patches onto it and push, or the tree stays on the old base.
+  * bka (or lineage-23.2): a plain mirror of upstream, pinned so lopro104's
+    commits can be taken later without touching this file again. GitHub does
+    not update a fork by itself: run "gh repo sync i928/NAME -b bka" before a
+    repo sync, or the tree silently falls behind Evo. Once a mirror gets our
+    own commits, move them to an evo-a16 branch and switch the pin.
 
   AdServices: android.ext.adservices visibility for //device/xiaomi, needed by
   lmi's extra-apps prebuilts (uses-library). //device/google is upstream already.
   frameworks/av: "CameraService: only attempt the ext library load once".
+
+  lopro104 carries commits on these (checked 2026-09-16):
+  hardware_interfaces bka +6 (restore q/android-4.9, FCM p/android-4.4,
+  soundtrigger 2.2, viperfx aidl, wifi_chip log noise, health battery poll);
+  hardware_google_pixel cnb +2 (thermal uevent buffer, powerstats; none on bka).
+  His hardware_mainline_common lineage-23.2 commit rewrites libpixelusb-aidl to
+  //hardware/google/pixel/usb, which does NOT resolve on bka: here the namespace
+  is hardware/google/pixel itself. Do not take it on bka.
 -->
 <manifest>
   <remove-project name="platform/packages/modules/AdServices" />
@@ -16,4 +31,22 @@
   <remove-project name="frameworks_av" />
   <project path="frameworks/av" name="frameworks_av"
            groups="pdk,sysui-studio" remote="i928" revision="evo-a16" />
+
+  <remove-project name="frameworks_base" />
+  <project path="frameworks/base" name="frameworks_base"
+           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="bka" />
+
+  <remove-project name="hardware_interfaces" />
+  <project path="hardware/interfaces" name="hardware_interfaces"
+           groups="pdk,sysui-studio" remote="i928" revision="bka" />
+
+  <remove-project name="hardware_google_pixel" />
+  <project path="hardware/google/pixel" name="hardware_google_pixel"
+           groups="generic_fs,pixel,pdk-gs-arm,pdk-gs-imgtec,pdk-desktop" remote="i928" revision="bka" />
+
+  <!-- Not in Evo's manifest; new project. Its root is its own soong namespace,
+       so nothing from it is installed unless a device adds it to
+       PRODUCT_SOONG_NAMESPACES. No module name clashes in the evo tree. -->
+  <project path="hardware/mainline/common" name="android_hardware_mainline_common"
+           remote="i928" revision="lineage-23.2" />
 </manifest>

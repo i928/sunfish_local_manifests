@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Platform repos (AOSP / Evolution X) carrying our commits, pinned to i928 forks.
+  Each evo-a16 branch is upstream bka plus our patches; when Evo moves bka
+  forward, rebase the patches onto it and push, or the tree stays on the old base.
+
+  AdServices: android.ext.adservices visibility for //device/xiaomi, needed by
+  lmi's extra-apps prebuilts (uses-library). //device/google is upstream already.
+  frameworks/av: "CameraService: only attempt the ext library load once".
+-->
+<manifest>
+  <remove-project name="platform/packages/modules/AdServices" />
+  <project path="packages/modules/AdServices" name="android_packages_modules_AdServices"
+           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="evo-a16" />
+
+  <remove-project name="frameworks_av" />
+  <project path="frameworks/av" name="frameworks_av"
+           groups="pdk,sysui-studio" remote="i928" revision="evo-a16" />
+</manifest>

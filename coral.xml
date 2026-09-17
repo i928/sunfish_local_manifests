@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pixel 4 / 4 XL (flame, coral). No official Evolution X 11 exists for coral; the
+  base is 0xSoul24's unofficial bka device+vendor pair, and our work sits on the
+  i928 forks' evo-a16 branch.
+
+  This used to pin 0xSoul24 upstream and keep evo-a16 as a local branch only, to
+  avoid a force sync. Every repo sync then detached both repos back to upstream,
+  and soong failed on the missing GoogleCamera.apk even for a sunfish build, so
+  they are pinned to the forks now.
+
+  vendor_google_coral is git-lfs backed; its .lfsconfig points LFS at
+  lfs.undocumented.software with an ssh pushurl we have no key for. Push to the
+  fork with git push and the no-verify flag. Blobs are still fetched over https.
+  repo sync does not pull LFS objects: run git lfs pull in vendor/google/coral.
+
+  kernel/google/msm-4.14 is deliberately NOT listed: coral builds floral_defconfig
+  from the sunfish kernel project in sunfish.xml.
+
+  ElmyraService (Active Edge) is required by device-common.mk. It tracks
+  lineage-23.2; lineage-20.0 fails on 16 with 26 Kotlin nullability errors that
+  upstream already fixed. Do not patch the Kotlin by hand.
+-->
+<manifest>
+  <project path="device/google/coral" name="device_google_coral"
+           remote="i928" revision="evo-a16" />
+  <project path="vendor/google/coral" name="vendor_google_coral"
+           remote="i928" revision="evo-a16" />
+
+  <project path="packages/apps/ElmyraService"
+           name="LineageOS/android_packages_apps_ElmyraService"
+           remote="github-non-los" revision="lineage-23.2" />
+</manifest>

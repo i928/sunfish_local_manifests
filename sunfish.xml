@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Local manifests for ~/evo-11.9 (Evolution X 11, bka): sunfish, crosshatch, coral, lmi.
+
+  Rule for this repo: anything the tree builds from OUR commits is pinned to an
+  i928 fork branch (evo-a16 unless a file says otherwise). repo sync then
+  fast-forwards to our work instead of detaching the project back to upstream,
+  which is what stranded coral, AdServices and frameworks/av on 2026-09-16.
+  Work branches (staging, experiments) are never pinned, but must be pushed:
+  a sync resets a checked-out work branch to the pin below.
+
+  The "i928" remote is defined once, here. repo reads every remote from every
+  local manifest before it reads projects, so the other files can use it.
+-->
 <manifest>
-    <!--Remotes-->
-    <remote name="los"       fetch="https://github.com/LineageOS"        revision="lineage-23.0" />
-    <remote name="muppets"   fetch="https://github.com/TheMuppets"       revision="lineage-23.0" />
-    <remote name="gh"        fetch="https://github.com/apelete"          revision="lineage-23.0" />
+  <remote name="i928" fetch="https://github.com/i928/" />
 
-    <!--Devices Trees-->
-    <project name="android_device_google_gs-common"         path="device/google/gs-common"     remote="los" />
-    <project name="android_device_google_sunfish"           path="device/google/sunfish"       remote="los" />
+  <!-- Pixel 4a (sunfish) -->
+  <project path="device/google/sunfish" name="device_google_sunfish"
+           remote="i928" revision="evo-a16" />
+  <project path="kernel/google/msm-4.14" name="kernel_google_msm-4.14"
+           remote="i928" revision="evo-a16" />
+  <project path="device/google/gs-common" name="device_google_gs-common"
+           remote="evo-devices" />
+  <project path="vendor/google/sunfish" name="vendor_google_sunfish"
+           remote="evo-devices" />
 
-    <!--Vendors Tree-->
-    <project name="proprietary_vendor_google_sunfish"       path="vendor/google/sunfish"       remote="muppets" />
+  <!-- vendor/lineage (Evo's vendor_evolution) with our build fixes -->
+  <remove-project name="vendor_evolution" />
+  <project path="vendor/lineage" name="vendor_evolution"
+           remote="i928" revision="sunfish-build-fixes" />
 
-    <!--Kernel Tree-->
-    <project name="android_kernel_google_msm-4.14"          path="kernel/google/msm-4.14"      remote="los" />
+  <!-- Drop the duplicate old Clang repository and track it from AOSP instead -->
+  <remove-project name="platform/prebuilts/clang/host/linux-x86" />
+  <project path="prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86"
+           remote="aosp" clone-depth="1" />
 </manifest>

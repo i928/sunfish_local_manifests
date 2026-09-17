@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pixel 3 / 3 XL (blueline, crosshatch): Evo device repos, no local work pinned -->
+<manifest>
+  <project path="device/google/crosshatch" name="device_google_crosshatch" remote="evo-devices" />
+  <project path="kernel/google/b1c1" name="kernel_google_b1c1" remote="evo-devices" />
+  <project path="vendor/google/crosshatch" name="vendor_google_crosshatch" remote="evo-devices" />
+  <project path="vendor/google/blueline" name="vendor_google_blueline" remote="evo-devices" />
+  <project path="vendor/Camera/b1c1" name="Oneloutre/vendor_Camera" remote="github-non-los" revision="b1c1" />
+</manifest>

@@ -22,8 +22,11 @@
            remote="i928" revision="evo-a16" />
   <project path="device/google/gs-common" name="device_google_gs-common"
            remote="evo-devices" />
+  <!-- evo-a16 = Evo bka + the 11 radio images committed as plain git files.
+       Evolution-X's LFS server never got those blobs, so upstream syncs leave
+       pointer stubs and the build fails add-radio-file-sha1-checked. -->
   <project path="vendor/google/sunfish" name="vendor_google_sunfish"
-           remote="evo-devices" />
+           remote="i928" revision="evo-a16" />
 
   <!-- vendor/lineage (Evo's vendor_evolution) with our build fixes -->
   <remove-project name="vendor_evolution" />

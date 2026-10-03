@@ -33,6 +33,13 @@
   <project path="vendor/lineage" name="vendor_evolution"
            remote="i928" revision="sunfish-build-fixes" />
 
+  <!-- OTA feed: our fork of Evolution-X/OTA. createjson.py reads the static
+       fields (maintainer, forum, ...) from evolution/OTA/builds/<device>.json,
+       and the ROM's Updater overlay fetches builds/{device}.json from it.
+       Removed by path: OTA-VANILLA shares the project name "OTA". -->
+  <remove-project path="evolution/OTA" />
+  <project path="evolution/OTA" name="OTA" remote="i928" revision="bka" />
+
   <!-- Drop the duplicate old Clang repository and track it from AOSP instead -->
   <remove-project name="platform/prebuilts/clang/host/linux-x86" />
   <project path="prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86"

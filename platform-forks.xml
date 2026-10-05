@@ -40,14 +40,13 @@
   <project path="frameworks/opt/telephony" name="frameworks_opt_telephony"
            groups="pdk,sysui-studio" remote="i928" revision="bka" />
 
-  <!-- frameworks/base pinned to branch fix (2026-10-05), not bka. fix = bka plus
-       1e4860a60 "fix android.xr not found" and c9843bd76 "AudioService: use the
-       500 ms audio permission update delay on phones too" (cuts the boot-time
-       audioserver_lifecycle CPU burst on sunfish). New framework work goes on
-       fix; when Evo bka is updated, rebase fix onto it and push before a sync. -->
+  <!-- frameworks/base: i928 bka (2026-10-05) = Evo work + 721442ef5 "AudioService:
+       use the 500 ms audio permission update delay on phones too". Branch fix
+       (with 1e4860a60 "fix android.xr not found") is retired: the android.xr
+       error came from stale flag storage in out/, not from missing sources. -->
   <remove-project name="frameworks_base" />
   <project path="frameworks/base" name="frameworks_base"
-           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="fix" />
+           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="bka" />
 
   <remove-project name="hardware_interfaces" />
   <project path="hardware/interfaces" name="hardware_interfaces"

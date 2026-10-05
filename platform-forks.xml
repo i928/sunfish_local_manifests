@@ -32,9 +32,14 @@
   <project path="frameworks/av" name="frameworks_av"
            groups="pdk,sysui-studio" remote="i928" revision="evo-a16" />
 
+  <!-- frameworks/base pinned to branch fix (2026-10-05), not bka. fix = bka plus
+       1e4860a60 "fix android.xr not found" and c9843bd76 "AudioService: use the
+       500 ms audio permission update delay on phones too" (cuts the boot-time
+       audioserver_lifecycle CPU burst on sunfish). New framework work goes on
+       fix; when Evo bka is updated, rebase fix onto it and push before a sync. -->
   <remove-project name="frameworks_base" />
   <project path="frameworks/base" name="frameworks_base"
-           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="bka" />
+           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="fix" />
 
   <remove-project name="hardware_interfaces" />
   <project path="hardware/interfaces" name="hardware_interfaces"

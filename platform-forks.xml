@@ -32,6 +32,15 @@
   <project path="frameworks/av" name="frameworks_av"
            groups="pdk,sysui-studio" remote="i928" revision="evo-a16" />
 
+  <!-- frameworks/opt/telephony from the i928 fork, branch bka (2026-10-05): Evo bka +
+       three Quince hardening commits (invalid subId user handles, invalid
+       physical cell IDs, cached unsupported N1 mode) + da92dcab15 "RIL: log
+       requests unsupported by the radio HAL once, at debug level" (silences
+       the per-boot RILJ "not supported on service" errors on old radio HALs). -->
+  <remove-project name="frameworks_opt_telephony" />
+  <project path="frameworks/opt/telephony" name="frameworks_opt_telephony"
+           groups="pdk,sysui-studio" remote="i928" revision="bka" />
+
   <!-- frameworks/base pinned to branch fix (2026-10-05), not bka. fix = bka plus
        1e4860a60 "fix android.xr not found" and c9843bd76 "AudioService: use the
        500 ms audio permission update delay on phones too" (cuts the boot-time

@@ -32,11 +32,10 @@
   <project path="frameworks/av" name="frameworks_av"
            groups="pdk,sysui-studio" remote="i928" revision="evo-a16" />
 
-  <!-- frameworks/opt/telephony from the i928 fork, branch bka (2026-10-05): Evo bka +
-       three Quince hardening commits (invalid subId user handles, invalid
-       physical cell IDs, cached unsupported N1 mode) + da92dcab15 "RIL: log
-       requests unsupported by the radio HAL once, at debug level" (silences
-       the per-boot RILJ "not supported on service" errors on old radio HALs). -->
+  <!-- frameworks/opt/telephony from the i928 fork, branch bka (2026-10-05): Evo bka
+       (17988547fd) + da92dcab15 "RIL: log requests unsupported by the radio HAL
+       once, at debug level" (silences the per-boot RILJ "not supported on
+       service" errors on old radio HALs). When Evo bka moves, rebase onto it. -->
   <remove-project name="frameworks_opt_telephony" />
   <project path="frameworks/opt/telephony" name="frameworks_opt_telephony"
            groups="pdk,sysui-studio" remote="i928" revision="bka" />

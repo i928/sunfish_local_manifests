@@ -40,15 +40,15 @@
   <project path="frameworks/opt/telephony" name="frameworks_opt_telephony"
            groups="pdk,sysui-studio" remote="i928" revision="bka" />
 
-  <!-- frameworks/base: i928 bka = Evo work + 721442ef5 "AudioService: use the
-       500 ms audio permission update delay on phones too" (2026-10-05), 0b0559dce
-       "BatterySaver: allow manual battery saver while plugged in" and f90ab3899
-       "SleepMode: keep the saved radio state across reboots" (2026-10-12). Branch fix
-       (with 1e4860a60 "fix android.xr not found") is retired: the android.xr
-       error came from stale flag storage in out/, not from missing sources. -->
+  <!-- frameworks/base: i928 evo-a16 (2026-10-13) = Evo bka 173b21e1a (Evo rewrote
+       bka; the old i928 bka is kept but retired) + our 5 commits: USB mode picker
+       default, AudioService 500 ms delay, battery saver while plugged in (state
+       machine + PowerManagerService guard), SleepMode saved state across reboots.
+       Evo Settings bka needs this Evo base (PixelDeviceRepository/TrickyStoreService
+       constants). When Evo moves bka, replay the 5 commits onto it. -->
   <remove-project name="frameworks_base" />
   <project path="frameworks/base" name="frameworks_base"
-           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="bka" />
+           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="evo-a16" />
 
   <!-- packages/apps/Settings: i928 evo-a16 = Evo bka + "Settings: allow toggling
        battery saver while plugged in" (pairs with frameworks/base bka 0b0559dce).

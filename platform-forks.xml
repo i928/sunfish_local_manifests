@@ -40,13 +40,22 @@
   <project path="frameworks/opt/telephony" name="frameworks_opt_telephony"
            groups="pdk,sysui-studio" remote="i928" revision="bka" />
 
-  <!-- frameworks/base: i928 bka (2026-10-05) = Evo work + 721442ef5 "AudioService:
-       use the 500 ms audio permission update delay on phones too". Branch fix
+  <!-- frameworks/base: i928 bka = Evo work + 721442ef5 "AudioService: use the
+       500 ms audio permission update delay on phones too" (2026-10-05), 0b0559dce
+       "BatterySaver: allow manual battery saver while plugged in" and f90ab3899
+       "SleepMode: keep the saved radio state across reboots" (2026-10-12). Branch fix
        (with 1e4860a60 "fix android.xr not found") is retired: the android.xr
        error came from stale flag storage in out/, not from missing sources. -->
   <remove-project name="frameworks_base" />
   <project path="frameworks/base" name="frameworks_base"
            groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="bka" />
+
+  <!-- packages/apps/Settings: i928 evo-a16 = Evo bka + "Settings: allow toggling
+       battery saver while plugged in" (pairs with frameworks/base bka 0b0559dce).
+       When Evo bka moves, rebase onto it. -->
+  <remove-project name="packages_apps_Settings" />
+  <project path="packages/apps/Settings" name="packages_apps_Settings"
+           groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="i928" revision="evo-a16" />
 
   <remove-project name="hardware_interfaces" />
   <project path="hardware/interfaces" name="hardware_interfaces"

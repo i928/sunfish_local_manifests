@@ -28,9 +28,12 @@
   <project path="packages/modules/AdServices" name="android_packages_modules_AdServices"
            groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="evo-a16" />
 
+  <!-- frameworks/av + frameworks/opt/telephony: branch evo-a16-1013 (2026-10-13) =
+       Evo's rewritten bka + our one commit each (camera ext load once / RIL log).
+       The old evo-a16 / bka branches are retired. -->
   <remove-project name="frameworks_av" />
   <project path="frameworks/av" name="frameworks_av"
-           groups="pdk,sysui-studio" remote="i928" revision="evo-a16" />
+           groups="pdk,sysui-studio" remote="i928" revision="evo-a16-1013" />
 
   <!-- frameworks/opt/telephony from the i928 fork, branch bka (2026-10-05): Evo bka
        (17988547fd) + da92dcab15 "RIL: log requests unsupported by the radio HAL
@@ -38,7 +41,7 @@
        service" errors on old radio HALs). When Evo bka moves, rebase onto it. -->
   <remove-project name="frameworks_opt_telephony" />
   <project path="frameworks/opt/telephony" name="frameworks_opt_telephony"
-           groups="pdk,sysui-studio" remote="i928" revision="bka" />
+           groups="pdk,sysui-studio" remote="i928" revision="evo-a16-1013" />
 
   <!-- frameworks/base: i928 evo-a16 (2026-10-13) = Evo bka 173b21e1a (Evo rewrote
        bka; the old i928 bka is kept but retired) + our 5 commits: USB mode picker

@@ -73,4 +73,11 @@
        PRODUCT_SOONG_NAMESPACES. No module name clashes in the evo tree. -->
   <project path="hardware/mainline/common" name="android_hardware_mainline_common"
            remote="i928" revision="lineage-23.2" />
+
+  <!-- packages/apps/Updater: i928 resume-restart = Evo bka + "Updater: restart a
+       download that has no partial file on resume" (stuck after a SourceForge 404). -->
+  <remove-project name="packages_apps_Updater" />
+  <project path="packages/apps/Updater" name="packages_apps_Updater"
+           remote="i928" revision="resume-restart" />
+
 </manifest>

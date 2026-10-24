@@ -87,4 +87,9 @@
   <project path="packages/apps/Updater" name="packages_apps_Updater"
            remote="i928" revision="resume-restart" />
 
+  <!-- packages/modules/Wifi: i928 evo-a16 = Evo bka + WPA3 Transition Disable keeps the PSK
+       when the SAE auto-upgrade is off (sunfish config_wifiSaeUpgradeEnabled=false). -->
+  <remove-project name="packages_modules_Wifi" />
+  <project path="packages/modules/Wifi" name="packages_modules_Wifi"
+           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="evo-a16" />
 </manifest>

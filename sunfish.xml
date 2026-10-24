@@ -31,7 +31,7 @@
   <!-- vendor/lineage (Evo's vendor_evolution) with our build fixes -->
   <remove-project name="vendor_evolution" />
   <project path="vendor/lineage" name="vendor_evolution"
-           remote="i928" revision="sunfish-build-fixes" />
+           remote="i928" revision="sunfish-build-fixes-1016" />
 
   <!-- OTA feed: our fork of Evolution-X/OTA. createjson.py reads the static
        fields (maintainer, forum, ...) from evolution/OTA/builds/<device>.json,

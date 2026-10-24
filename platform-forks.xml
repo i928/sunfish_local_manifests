@@ -51,7 +51,7 @@
        constants). When Evo moves bka, replay the 5 commits onto it. -->
   <remove-project name="frameworks_base" />
   <project path="frameworks/base" name="frameworks_base"
-           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="evo-a16" />
+           groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="evo-a16-1016" />
 
   <!-- frameworks/native: i928 evo-a16 (2026-10-15) = Evo bka 8a54c845 + "installd: run
        in the top-app cpuset and boost group" (shorter user unlock). When Evo bka
@@ -65,7 +65,7 @@
        When Evo bka moves, rebase onto it. -->
   <remove-project name="packages_apps_Settings" />
   <project path="packages/apps/Settings" name="packages_apps_Settings"
-           groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="i928" revision="evo-a16" />
+           groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="i928" revision="evo-a16-1016" />
 
   <remove-project name="hardware_interfaces" />
   <project path="hardware/interfaces" name="hardware_interfaces"

@@ -65,7 +65,7 @@
        When Evo bka moves, rebase onto it. -->
   <remove-project name="packages_apps_Settings" />
   <project path="packages/apps/Settings" name="packages_apps_Settings"
-           groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="i928" revision="evo-a16-1016" />
+           groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="i928" revision="evo-a16-1024" />
 
   <remove-project name="hardware_interfaces" />
   <project path="hardware/interfaces" name="hardware_interfaces"

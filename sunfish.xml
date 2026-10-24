@@ -17,9 +17,9 @@
 
   <!-- Pixel 4a (sunfish) -->
   <project path="device/google/sunfish" name="device_google_sunfish"
-           remote="i928" revision="evo-a16" />
+           remote="i928" revision="bka_pub" />
   <project path="kernel/google/msm-4.14" name="kernel_google_msm-4.14"
-           remote="i928" revision="evo-a16" />
+           remote="i928" revision="bka_pub" />
   <project path="device/google/gs-common" name="device_google_gs-common"
            remote="evo-devices" />
   <!-- evo-a16 = Evo bka + the 11 radio images committed as plain git files.

@@ -20,8 +20,11 @@
            remote="i928" revision="bka_pub" />
   <project path="kernel/google/msm-4.14" name="kernel_google_msm-4.14"
            remote="i928" revision="bka_pub" />
-  <project path="device/google/gs-common" name="device_google_gs-common"
-           remote="evo-devices" />
+  <!-- gs-common: only crosshatch includes it (thermal/thermal_hal); sunfish just
+       lists it in evolution.dependencies. Evo's has no old-Pixel parts, LOS
+       lineage-23.2 deleted them, so use LOS lineage-23.0 (same as lin23). -->
+  <project path="device/google/gs-common" name="LineageOS/android_device_google_gs-common"
+           remote="github-non-los" revision="lineage-23.0" />
   <!-- evo-a16 = Evo bka + the 11 radio images committed as plain git files.
        Evolution-X's LFS server never got those blobs, so upstream syncs leave
        pointer stubs and the build fails add-radio-file-sha1-checked. -->

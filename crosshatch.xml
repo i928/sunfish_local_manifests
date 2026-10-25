@@ -8,7 +8,7 @@
   Clang 23 fixes), replacing Evo's kernel_google_b1c1. KSU-Next is a submodule;
   repo does not fetch submodules, so it is its own project (UAPI 5 pin, same as
   lin23 crosshatch / sunfish).
-  vendor blobs and camera: Evo's, unmodified.
+  vendor blobs: i928 (as lin23); blueline blobs and camera: Evo's.
   Platform fixes crosshatch needs (msm-4.9) are in platform-forks.xml.
 -->
 <manifest>
@@ -16,7 +16,13 @@
   <project path="kernel/google/msm-4.9" name="kernel_google_msm-4.9" remote="i928" revision="bka_pub" />
   <project path="kernel/google/msm-4.9/drivers/kernelsu" name="KSU-Next" remote="i928"
            revision="5a21ddacd12e5c98c013a8570433fca4606c8947" upstream="uapi5" />
-  <project path="vendor/google/crosshatch" name="vendor_google_crosshatch" remote="evo-devices" />
+  <!-- Blobs: the same i928 vendor as lin23 crosshatch (TheMuppets lineage-22.2 fork +
+       libtinyxml2-v34, CHT VoLTE mbn, 2023 CarrierSettings set). Evo's
+       vendor_google_crosshatch is older than the ported device tree (it lacks
+       DeviceIntelligenceNetworkPrebuilt and the CarrierSettings .pb files).
+       Radio images are git-lfs: run "git lfs pull" in it after a sync. -->
+  <project path="vendor/google/crosshatch" name="proprietary_vendor_google_crosshatch"
+           remote="i928" revision="lineage-23.2" />
   <project path="vendor/google/blueline" name="vendor_google_blueline" remote="evo-devices" />
   <project path="vendor/Camera/b1c1" name="Oneloutre/vendor_Camera" remote="github-non-los" revision="b1c1" />
 </manifest>

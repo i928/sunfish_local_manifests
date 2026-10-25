@@ -92,4 +92,22 @@
   <remove-project name="packages_modules_Wifi" />
   <project path="packages/modules/Wifi" name="packages_modules_Wifi"
            groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="i928" revision="evo-a16" />
+
+  <!-- Old-kernel fixes for crosshatch (msm-4.9); harmless on sunfish (4.14).
+       Connectivity: i928 android_packages_modules_Connectivity evo-a16 = Evo bka + netd
+       cgroup skb attach on old kernels + 4.9 socket create/bind hook variants (Evo's
+       dbb8c0a already relaxes netbpfload and forces isAtLeast25Q2() false).
+       bionic: i928 android_bionic evo-a16 = Evo bka + epoll_pwait2 / close_range CLOEXEC
+       ENOSYS fallbacks. libmeminfo needs nothing: Evo already checks the gpuMem map.
+       Both live in the LineageOS-fork repos (GitHub allows one fork per network). -->
+  <remove-project name="packages_modules_Connectivity" />
+  <project path="packages/modules/Connectivity" name="android_packages_modules_Connectivity"
+           groups="pdk-cw-fs,pdk-fs" remote="i928" revision="evo-a16" />
+  <remove-project name="bionic" />
+  <project path="bionic" name="android_bionic" groups="pdk" remote="i928" revision="evo-a16" />
+  <!-- hardware/qcom/audio: i928 cirrus-pthread = LineageOS lineage-23.2 (what Evo uses)
+       + cirrus thread routines with the pthread start signature (crosshatch). -->
+  <remove-project name="LineageOS/android_hardware_qcom_audio" />
+  <project path="hardware/qcom/audio" name="android_hardware_qcom_audio"
+           groups="qcom,qcom_audio,pdk-qcom" remote="i928" revision="cirrus-pthread" />
 </manifest>

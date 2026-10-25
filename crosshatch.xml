@@ -16,6 +16,7 @@
   <project path="kernel/google/msm-4.9" name="kernel_google_msm-4.9" remote="i928" revision="bka_pub" />
   <project path="kernel/google/msm-4.9/drivers/kernelsu" name="KSU-Next" remote="i928"
            revision="5a21ddacd12e5c98c013a8570433fca4606c8947" upstream="uapi5" />
+  <project path="kernel/google/msm-4.9/fs/exfat" name="exfat-linux" remote="i928" revision="4.93" />
   <!-- Blobs: the same i928 vendor as lin23 crosshatch (TheMuppets lineage-22.2 fork +
        libtinyxml2-v34, CHT VoLTE mbn, 2023 CarrierSettings set). Evo's
        vendor_google_crosshatch is older than the ported device tree (it lacks

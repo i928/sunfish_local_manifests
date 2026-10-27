@@ -110,4 +110,9 @@
   <remove-project name="LineageOS/android_hardware_qcom_audio" />
   <project path="hardware/qcom/audio" name="android_hardware_qcom_audio"
            groups="qcom,qcom_audio,pdk-qcom" remote="i928" revision="cirrus-pthread" />
+  <!-- system/core: i928 system_core evo-a16 = Evo bka (1429ff9) + 7f2940a "init: Don't wipe
+       the user's /data/adb module data" (drops Evo's one-time rm -rf of /data/adb/tricky_store,
+       playintegrityfix, gameprops; only SELinux stopped it on sunfish 2026-10-28). bka = mirror. -->
+  <remove-project name="system_core" />
+  <project path="system/core" name="system_core" groups="pdk" remote="i928" revision="evo-a16" />
 </manifest>

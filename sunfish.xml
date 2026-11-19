@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Local manifests for ~/evo-11.9 (Evolution X 11, bka): sunfish, crosshatch, coral, lmi.
+  Local manifests for ~/evo-11.9 (Evolution X 11, bka): sunfish, crosshatch, lmi (coral dropped 2026-11-19).
 
   Rule for this repo: anything the tree builds from OUR commits is pinned to an
   i928 fork branch (evo-a16 unless a file says otherwise). repo sync then
